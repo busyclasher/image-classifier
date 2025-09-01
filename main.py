@@ -61,3 +61,7 @@ def main():
             st.subheader("Predictions")
             for _, label, score in predictions:
                 st.write(f"{label}: {score:.2f}%")
+
+
+if __name__ == "__main__":
+    main()
