@@ -1,3 +1,13 @@
+import os
+
+# Set the environment variable to disable oneDNN optimizations
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Now you can import TensorFlow
+import tensorflow as tf
+
+# The rest of your TensorFlow code goes here
+
 import cv2
 import numpy as np
 import streamlit as st
@@ -7,7 +17,7 @@ from tensorflow.keras.applications.mobilenet_v2 import (
     decode_predictions
 )
 
-from PIL import image
+from PIL import Image
 
 def load_model():
     model = MobileNetV2(weights="imagenet")
@@ -32,7 +42,6 @@ def classify_image(model, image):
         return None
 
 def main():
-    st.set_page_config(page_title="Image Classifier", page_icon="👨🏻‍💻", Layout="centered")
     st.set_page_config(page_title="Image Classifier", page_icon="👨🏻‍💻", layout="centered")
     st.write("AI Image Classifier")
     st.write("Upload an image to classify and let it tell you what it is")
